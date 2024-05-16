@@ -1,13 +1,13 @@
-import { Router } from "express";
-import { create, update, remove, find, findById, findByClient } from "../classes/PubClass";
-import { findById as _findById } from '../classes/ClientClass';
-const router = Router();
+const express = require("express");
+const Pub = require("../classes/PubClass");
+const Client = require('../classes/ClientClass');
+const router = express.Router();
 
 
 router.post("/cre", async (req, res) => {
   try {
     const pub = req.body;
-    const newPub = await create(pub);
+    const newPub = await Pub.create(pub);
     res.status(201).send(newPub);
   } catch (error) {
     res.status(500).send(error);
@@ -18,8 +18,8 @@ router.post("/cre", async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     const pub = req.body;
-    const newPub = await create(pub);
-    const client = await _findById(pub.client);
+    const newPub = await Pub.create(pub);
+    const client = await Client.findById(pub.client);
 
     Number(client.solde) += Number(pub.devis) - Number(pub.versement);
 
@@ -37,11 +37,11 @@ router.put("/paiement/:id", async (req, res) => {
     const _id = req.params.id;
 
 
-    const client = await _findById(pub.client);
+    const client = await Client.findById(pub.client);
     client.solde += pub.devis - pub.versement;
     await client.save();
 
-    const result = await update(_id, pub);
+    const result = await Pub.update(_id, pub);
     res.status(200).json(result);
   } catch (error) {
     res.status(500).send(error);
@@ -54,7 +54,7 @@ router.put("/:id", async (req, res) => {
     const pub = req.body;
     const _id = req.params.id;
 
-    const result = await update(_id, pub);
+    const result = await Pub.update(_id, pub);
     res.status(200).json(result);
   } catch (error) {
     res.status(500).send(error);
@@ -65,7 +65,7 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   try {
     const pub = req.params.id;
-    const newPub = await remove(pub);
+    const newPub = await Pub.remove(pub);
     res.status(200).send(newPub);
   } catch (error) {
     res.status(500).send(error);
@@ -75,7 +75,7 @@ router.delete("/:id", async (req, res) => {
 // Find a Pub
 router.get("/", async (req, res) => {
   try {
-    const newPub = await find();
+    const newPub = await Pub.find();
     res.status(200).send(newPub);
   } catch (error) {
     res.status(500).send(error);
@@ -86,7 +86,7 @@ router.get("/", async (req, res) => {
 router.get("/find/:id", async (req, res) => {
   try {
     const { _id } = req.params;
-    const newPub = await findById(_id);
+    const newPub = await Pub.findById(_id);
     res.status(200).send(newPub);
   } catch (error) {
     res.status(500).send(error);
@@ -97,11 +97,11 @@ router.get("/find/:id", async (req, res) => {
 router.get("/findpubbyclient/:clientId", async (req, res) => {
   try {
       const {clientId} = req.params
-      const newPub = await findByClient(clientId)
+      const newPub = await Pub.findByClient(clientId)
       res.status(200).send(newPub)
   } catch (error) {
       res.status(500).send(error)
   }
 });
 
-export default router;
+module.exports = router;

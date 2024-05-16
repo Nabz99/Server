@@ -1,4 +1,4 @@
-const PubSchema = require("../models/PubModel")
+const PubSchema = require('../models/PubModel')
 
 class Pub {
 

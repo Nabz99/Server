@@ -1,6 +1,6 @@
 const express = require("express");
-const Pub = require("../classes/PubClass");
 const Client = require('../classes/ClientClass');
+const Pub = require('../classes/PubClass');
 const router = express.Router();
 
 

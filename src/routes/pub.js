@@ -1,5 +1,5 @@
 import express from 'express';
-import Pub from '../classes/PubClass.js';
+import Pub from "../classes/PubClass.js";
 import Client from '../classes/ClientClass.js';
 const router = express.Router();
 

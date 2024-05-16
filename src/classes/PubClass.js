@@ -1,4 +1,4 @@
-import { PubSchema } from "../models/PubModel.js"; // Import the named export directly
+import { PubSchema } from "../models/PubModel.js";
 
 export default class Pub {
 

@@ -1,7 +1,6 @@
-const {model, Schema} = require('mongoose')
+import { Schema, model } from 'mongoose';
 
 const AdminSchema = new Schema({
-
   nom: {
     type: String,
     required: true,
@@ -31,15 +30,14 @@ const AdminSchema = new Schema({
     min: 10,
     max: 10
   },
-  created_at:{
+  created_at: {
     type: Date,
     default: Date.now
   },
-  updated_at:{
+  updated_at: {
     type: Date,
     default: Date.now
   }
-
 });
 
-module.exports = model('Admin', AdminSchema,'admins');
+export { AdminSchema }; // Export AdminSchema as a named export

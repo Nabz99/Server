@@ -1,7 +1,8 @@
-const express = require("express");
-const Client = require('../classes/ClientClass');
-const Pub = require('../classes/PubClass');
+import express from 'express';
+import Client from '../classes/ClientClass.js';
+import Pub from '../classes/PubClass.js';
 const router = express.Router();
+
 
 
 router.post("/cre", async (req, res) => {
@@ -104,4 +105,4 @@ router.get("/findpubbyclient/:clientId", async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

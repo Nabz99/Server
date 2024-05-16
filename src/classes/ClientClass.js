@@ -1,7 +1,7 @@
-const ClientSchema = require("../models/ClientModel")
-const bcrypt = require("bcryptjs")
+import { ClientSchema } from "../models/ClientModel.js"; // Import the named export directly
+import bcrypt from "bcryptjs";
 
-class Client {
+export default class Client {
 
     static async create(client) {
 
@@ -40,5 +40,3 @@ class Client {
         return t
     }
 }
-
-module.exports = Client

@@ -1,6 +1,6 @@
-const ArticleSchema = require("../models/ArticleModel")
+import { ArticleSchema } from "../models/ArticleModel.js"; // Import the named export directly
 
-class Article {
+export default class Article {
 
     static async create(article) {
 
@@ -34,5 +34,3 @@ class Article {
         return t
     }
 }
-
-module.exports = Article

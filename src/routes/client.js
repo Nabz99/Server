@@ -1,5 +1,5 @@
-const express = require("express");
-const Client = require("../classes/ClientClass");
+import express from 'express';
+import Client from '../classes/ClientClass.js';
 const router = express.Router();
 
 // Create a Client
@@ -62,4 +62,4 @@ router.get("/", async (req, res) => {
   });
 
   
-  module.exports = router;
+  export default router;

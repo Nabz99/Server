@@ -1,5 +1,5 @@
-const express = require("express");
-const Admin = require("../classes/AdminClass");
+import express from 'express';
+import Admin from '../classes/AdminClass.js';
 const router = express.Router();
 
 // Create an admin
@@ -58,4 +58,4 @@ router.get("/find/:id", async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

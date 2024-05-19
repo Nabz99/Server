@@ -4,7 +4,7 @@ import { connect } from 'mongoose';
 import createError from 'http-errors';
 import cors from 'cors';
 import { router } from './src/routes/index.js';
-import { apiKeyMiddleware } from './middleware/apiKey.js'; // Importing the named export 'apiKeyMiddleware' from the module
+// import { apiKeyMiddleware } from './middleware/apiKey.js'; // Importing the named export 'apiKeyMiddleware' from the module
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -18,7 +18,7 @@ app.use(urlencoded({ extended: true }));
 
 app.use(cors());
 
-app.use(apiKeyMiddleware);
+// app.use(apiKeyMiddleware);
 
 // Routes
 app.use('/api', router);

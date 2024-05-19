@@ -1,6 +1,6 @@
-import { PubSchema } from "../models/PubModel.js";
+const PubSchema = require("../models/PubModel")
 
-export default class Pub {
+class Pub {
 
     static async create(pub) {
 
@@ -38,3 +38,5 @@ export default class Pub {
         return t
     }
 }
+
+module.exports = Pub

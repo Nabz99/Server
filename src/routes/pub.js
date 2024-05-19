@@ -1,7 +1,18 @@
-import express from 'express';
-import Pub from "../classes/PubClass.js";
-import Client from '../classes/ClientClass.js';
+const express = require("express");
+const Pub = require("../classes/PubClass");
+const Client = require('../classes/ClientClass');
 const router = express.Router();
+
+
+router.post("/cre", async (req, res) => {
+  try {
+    const pub = req.body;
+    const newPub = await Pub.create(pub);
+    res.status(201).send(newPub);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
 
 // Create a Pub
 router.post("/", async (req, res) => {
@@ -93,14 +104,4 @@ router.get("/findpubbyclient/:clientId", async (req, res) => {
   }
 });
 
-router.post("/cre", async (req, res) => {
-  try {
-    const pub = req.body;
-    const newPub = await Pub.create(pub);
-    res.status(201).send(newPub);
-  } catch (error) {
-    res.status(500).send(error);
-  }
-});
-
-export default router;
+module.exports = router;

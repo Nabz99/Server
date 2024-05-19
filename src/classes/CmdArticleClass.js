@@ -1,6 +1,6 @@
-import { CmdArticleSchema } from "../models/CmdArticleModel.js"; // Import the named export directly
+const CmdArticleSchema = require("../models/CmdArticleModel")
 
-export default class CmdArticle {
+class CmdArticle {
 
     static async create(CmdArticle) {
 
@@ -38,3 +38,5 @@ export default class CmdArticle {
         return t
     }
 }
+
+module.exports = CmdArticle

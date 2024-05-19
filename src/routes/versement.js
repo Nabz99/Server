@@ -1,7 +1,6 @@
-import express from 'express';
-import Versement from '../classes/VersementClass.js';
-import Client from '../classes/ClientClass.js';
-
+const express = require("express");
+const Versement = require("../classes/VersementClass");
+const Client = require('../classes/ClientClass');
 const router = express.Router();
 
 
@@ -84,4 +83,4 @@ router.get("/findversementbyclient/:clientId", async (req, res) => {
   }
 });
 
-export default router;
+module.exports = router;

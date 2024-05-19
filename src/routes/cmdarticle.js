@@ -1,8 +1,7 @@
-import express from 'express';
-import CmdArticle from '../classes/CmdArticleClass.js';
-import Article from '../classes/ArticleClass.js';
-import Client from '../classes/ClientClass.js';
-
+const express = require("express");
+const CmdArticle = require("../classes/CmdArticleClass");
+const Article = require('../classes/ArticleClass')
+const Client = require('../classes/ClientClass');
 const router = express.Router();
 
 // Create a CmdArticle
@@ -102,4 +101,4 @@ router.get("/findcmdarticlebyclient/:clientId", async (req, res) => {
       res.status(500).send(error)
   }
 });
-export default router;
+module.exports = router;

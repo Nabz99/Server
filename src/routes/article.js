@@ -1,5 +1,5 @@
-import express from 'express';
-import Article from '../classes/ArticleClass.js';
+const express = require("express");
+const Article = require("../classes/ArticleClass");
 const router = express.Router();
 
 router.post("/", async (req, res) => {
@@ -57,4 +57,4 @@ router.get("/find/:id", async (req, res) => {
   }
 });
 
-export default router;
+module.exports = router;

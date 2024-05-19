@@ -1,4 +1,4 @@
-import { Schema, model } from 'mongoose';
+const {model, Schema} = require('mongoose')
 const PubSchema = new Schema({
 
   client: {
@@ -56,4 +56,4 @@ const PubSchema = new Schema({
 
 });
 
-export { PubSchema }; // Export AdminSchema as a named export
+module.exports = model('Pub', PubSchema, 'pubs');

@@ -1,4 +1,4 @@
-import { Schema, model } from 'mongoose';
+const {model, Schema} = require('mongoose')
 
 const ArticleSchema = new Schema({
 
@@ -34,4 +34,4 @@ const ArticleSchema = new Schema({
 
 });
 
-export { ArticleSchema }; // Export AdminSchema as a named export
+module.exports = model('Article', ArticleSchema,'articles');

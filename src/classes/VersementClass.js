@@ -1,7 +1,7 @@
-import { VersementSchema } from "../models/VersementModel.js"; // Import the named export directly
+const VersementSchema = require("../models/VersementModel")
 
 
-export default class Versement {
+class Versement {
 
     static async create(versement) {
 
@@ -41,3 +41,5 @@ export default class Versement {
         return t
     }
 }
+
+module.exports = Versement

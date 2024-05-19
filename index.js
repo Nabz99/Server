@@ -1,24 +1,21 @@
-import express from 'express';
-import { json, urlencoded } from 'express';
-import { connect } from 'mongoose';
-import createError from 'http-errors';
-import cors from 'cors';
-import { router } from './src/routes/index.js';
-// import { apiKeyMiddleware } from './middleware/apiKey.js'; // Importing the named export 'apiKeyMiddleware' from the module
-import dotenv from 'dotenv';
-
-dotenv.config();
+const express = require('express');
+const mongoose = require('mongoose');
+const createError = require('http-errors');
+const cors = require('cors');
+const router = require('./src/routes');
+const apiKeyMiddleware = require('./middleware/apiKey.js');
+require('dotenv').config();
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 // Middleware
-app.use(json());
-app.use(urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.use(cors());
 
-// app.use(apiKeyMiddleware);
+app.use(apiKeyMiddleware);
 
 // Routes
 app.use('/api', router);
@@ -35,7 +32,7 @@ app.use((err, req, res, next) => {
 });
 
 // Connect to MongoDB
-connect(process.env.DB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.DB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log('Connected to the database');
     // Start the server after successfully connecting to the database

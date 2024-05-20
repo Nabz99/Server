@@ -28,7 +28,7 @@ const CmdArticleSchema = new Schema({
         required: true
     },
     versement: {
-        type: Number,
+        type: String,
     },
     etat: {
         type: String,

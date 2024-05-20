@@ -21,7 +21,10 @@ router.post("/", async (req, res) => {
     const newPub = await Pub.create(pub);
     const client = await Client.findById(pub.client);
 
-    client.solde += pub.devis - pub.versement;
+    const devis = parseInt(pub.devis, 10);
+    const versement = parseInt(pub.versement, 10);
+
+    client.solde += devis - versement;
 
     await client.save();
     res.status(201).send(newPub);
@@ -38,7 +41,11 @@ router.put("/paiement/:id", async (req, res) => {
 
 
     const client = await Client.findById(pub.client);
-    client.solde += pub.devis - pub.versement;
+
+    const devis = parseInt(pub.devis, 10);
+    const versement = parseInt(pub.versement, 10);
+
+    client.solde += devis - versement;    
     await client.save();
 
     const result = await Pub.update(_id, pub);

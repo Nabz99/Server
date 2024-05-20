@@ -36,7 +36,7 @@ const ClientSchema = new Schema({
     unique: true
     },
   solde:{
-    type: Number,
+    type: String,
   },
   created_at:{
     type: Date,

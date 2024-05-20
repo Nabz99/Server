@@ -28,14 +28,14 @@ const CmdArticleSchema = new Schema({
         required: true
     },
     versement: {
-        type: Number,
+        type: String,
     },
     etat: {
         type: String,
         required: true
     },
     prixtotal: {
-        type: Number,
+        type: String,
         required: true
     },
     paye: {

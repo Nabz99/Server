@@ -26,7 +26,7 @@ const PubSchema = new Schema({
     required: true
   },
   devis: {
-    type: Number,
+    type: String,
     required: false
   },
   etat: {
@@ -38,7 +38,7 @@ const PubSchema = new Schema({
     required: false
   },
   versement: {
-    type: Number,
+    type: String,
     required: false
   },
   paye: {

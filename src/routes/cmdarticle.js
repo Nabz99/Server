@@ -50,6 +50,12 @@ router.put("/paiement/:id", async (req, res) => {
     
     const client = await Client.findById(cmdarticle.client);
     client.solde += cmdarticle.prixtotal - cmdarticle.versement;
+    const solde = parseFloat(client.solde);
+    const prixtotal = parseFloat(cmdarticle.prixtotal );
+    const versement = parseFloat(cmdarticle.versement);
+
+    // Ensure client.solde is updated correctly
+    client.solde = solde + (prixtotal - versement);
     await client.save();
 
     const result = await CmdArticle.update(_id, cmdarticle);

@@ -21,7 +21,12 @@ router.post("/", async (req, res) => {
     const newPub = await Pub.create(pub);
     const client = await Client.findById(pub.client);
 
-    client.solde += pub.devis - pub.versement;
+    const solde = parseFloat(client.solde);
+    const devis = parseFloat(pub.devis);
+    const versement = parseFloat(pub.versement);
+
+    // Ensure client.solde is updated correctly
+    client.solde = solde + (devis - versement);
 
     await client.save();
     res.status(201).send(newPub);
@@ -39,7 +44,13 @@ router.put("/paiement/:id", async (req, res) => {
 
     const client = await Client.findById(pub.client);
 
-    client.solde += pub.devis - pub.versement;
+    const solde = parseFloat(client.solde);
+    const devis = parseFloat(pub.devis);
+    const versement = parseFloat(pub.versement);
+
+    // Ensure client.solde is updated correctly
+    client.solde = solde + (devis - versement);
+
     await client.save();
 
     const result = await Pub.update(_id, pub);
@@ -97,11 +108,11 @@ router.get("/find/:id", async (req, res) => {
 // Find a Pub by client
 router.get("/findpubbyclient/:clientId", async (req, res) => {
   try {
-      const {clientId} = req.params
-      const newPub = await Pub.findByClient(clientId)
-      res.status(200).send(newPub)
+    const { clientId } = req.params
+    const newPub = await Pub.findByClient(clientId)
+    res.status(200).send(newPub)
   } catch (error) {
-      res.status(500).send(error)
+    res.status(500).send(error)
   }
 });
 

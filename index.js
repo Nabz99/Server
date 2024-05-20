@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const createError = require('http-errors');
 const cors = require('cors');
 const router = require('./src/routes');
-// const apiKeyMiddleware = require('./middleware/apiKey.js');
+const apiKeyMiddleware = require('./middleware/apiKey.js');
 require('dotenv').config();
 
 const app = express();
@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(cors());
 
-// app.use(apiKeyMiddleware);
+app.use(apiKeyMiddleware);
 
 // Routes
 app.use('/api', router);

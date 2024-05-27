@@ -49,7 +49,7 @@ router.put("/paiement/:id", async (req, res) => {
     }
     
     const client = await Client.findById(cmdarticle.client);
-    client.solde += cmdarticle.prixtotal - cmdarticle.versement;
+    // client.solde += cmdarticle.prixtotal - cmdarticle.versement;
     const solde = parseFloat(client.solde);
     const prixtotal = parseFloat(cmdarticle.prixtotal );
     const versement = parseFloat(cmdarticle.versement);
